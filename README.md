@@ -1,93 +1,97 @@
-# 📦 Inventory Manager — Desktop App
-### CustomTkinter Dark Mode  ·  Python + MySQL
+#  Inventory Management System
+
+A feature-rich desktop application for managing inventory, sales, purchases,
+and analytics — built with Python, CustomTkinter, and MySQL.
 
 ---
 
-## 🚀 Quick Start
+## Technology Stack and Tools Used
 
-### 1. Install dependencies
+| Layer        | Technology              |
+|--------------|-------------------------|
+| Language     | Python 3.x              |
+| GUI Framework| CustomTkinter           |
+| Database     | MySQL 8.0               |
+| Charts       | Matplotlib              |
+| IDE          | VS Code / PyCharm       |
+
+---
+
+##  Features and Functionalities Implemented
+
+-  User Authentication (Login/Register with role-based access)
+-  Dashboard with real-time stats and KPIs
+-  Product Management (Add, Edit, Delete, Search)
+-  Point of Sale (POS) Module
+-  Purchase Order Management
+-  Sales Analytics with Matplotlib charts
+-  Low-stock and Expiry Alerts
+-  User Management (Admin controls)
+-  AI Companion (smart restock suggestions using sales velocity)
+
+---
+
+##  Installation / Execution Steps
+
+### Prerequisites
+- Python 3.9+
+- MySQL 8.0
+- pip
+
+### Steps
+
+1. **Clone the repository**
 ```bash
-pip install customtkinter mysql-connector-python
+   git clone https://github.com/YOUR_USERNAME/inventory-management-system.git
+   cd inventory-management-system
 ```
 
-### 2. Setup the database
-Run `database_setup.sql` in MySQL Workbench or terminal:
+2. **Install dependencies**
 ```bash
-mysql -u root -p < database_setup.sql
+   pip install -r requirements.txt
 ```
 
-### 3. Configure database credentials
-Open `db_config.py` and set your MySQL password:
+3. **Set up the database**
+   - Open MySQL and run the schema file:
+```bash
+   mysql -u root -p < database/schema.sql
+```
+
+4. **Configure DB credentials**
+   - Open `src/db_config.py` and update:
 ```python
-DB_CONFIG = {
-    "host":     "localhost",
-    "user":     "root",
-    "password": "YOUR_PASSWORD",   # ← change this
-    "database": "inventory_db",
-    "port":     3306,
-}
+   HOST = "localhost"
+   USER = "root"
+   PASSWORD = "your_password"
+   DATABASE = "inventory_db"
 ```
 
-### 4. Launch the app
+5. **Run the application**
 ```bash
-python main.py
+   python src/main.py
 ```
 
 ---
 
-## 🔑 Default Login
+##  Team Members
 
-| Username  | Password    | Role    |
-|-----------|-------------|---------|
-| admin     | admin123    | Admin   |
-| manager1  | manager123  | Manager |
-| staff1    | staff123    | Staff   |
+| Name           | Enrollment No. | Role               |
+|----------------|----------------|--------------------|
+| AISHWARY YAdav | EN23CS301081   | Lead Developer     |
 
----
-
-## 📁 Files
-
-```
-inv_desktop/
-├── main.py              ← Run this
-├── db_config.py         ← Database credentials
-├── database_setup.sql   ← Run once in MySQL
-└── README.md
-```
 
 ---
 
-## ✨ Features
+##  Screenshots
 
-| Page | Features |
-|------|----------|
-| 🏠 Dashboard | Live stat cards, active alerts table |
-| 📦 Products | Add/Edit/Delete, expiry date, color-coded status, Stock In/Out |
-| 🛒 Point of Sale | Real-time cart, discount, receipt preview, auto stock deduction |
-| 📋 Purchase Orders | Create POs, mark received, auto stock increment |
-| 📊 Sales History | Filter Today/Week/Month/All, drill-down view |
-| ⚠️ Alerts | Expired · Expiring ≤30d · Low Stock <5 · Out of Stock |
-| 👥 Users | Admin-only CRUD, roles |
+### Login Screen
+![Login](screenshots/login.png)
 
----
+### Dashboard
+![Dashboard](screenshots/dashboard.png)
 
-## 🎨 UI Design
-- **Framework:** CustomTkinter (modern, native-looking)
-- **Theme:** Dark mode with blue accent
-- **Color codes:**
-  - 🔴 Red rows = Expired products
-  - 🟡 Yellow rows = Expiring soon or low stock
-  - ✅ Normal = OK products
-- Rounded cards, smooth hover effects, sidebar navigation
+### POS Module
+![POS](screenshots/pos.png)
 
----
-
-## ⚠️ Alert Logic
-
-| Condition | Alert |
-|-----------|-------|
-| `expiry_date < today` | 🚨 EXPIRED — shown in red |
-| `expiry_date ≤ today + 30d` | ⏳ Expiring soon — shown in yellow |
-| `quantity < 5` | ⚠️ Low Stock warning |
-| `quantity = 0` | 📭 Out of Stock |
-| App startup | Popup if any expired or low-stock items |
+### Sales Analytics
+![Analytics](screenshots/analytics.png)
